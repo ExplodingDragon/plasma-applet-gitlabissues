@@ -32,13 +32,15 @@ Item {
 		for (var i = 0; i < arr.length; i++) {
 			var repoString = arr[i]
 			repoString = repoString.trim()
-			if (repoString.match(repoStringRegex)) {
-				out.push(repoString)
-			} else if (repoString.trim() == '') { // Empty str
-				// Skip
-			} else {
-				skipped.push(repoString)
-			}
+							out.push(repoString)
+
+			// if (repoString.match(repoStringRegex)) {
+			// 	out.push(repoString)
+			// } else if (repoString.trim() == '') { // Empty str
+			// 	// Skip
+			// } else {
+			// 	skipped.push(repoString)
+			// }
 		}
 		repoStringSkipped = skipped
 		return out
@@ -115,7 +117,6 @@ Item {
 		// We already generated the url when creating the cacheKey.
 		// var url = formatUrl(repoString, args)
 		var url = args.url
-
 		Requests.getJSON({
 			url: url
 		}, function(err, data, xhr){

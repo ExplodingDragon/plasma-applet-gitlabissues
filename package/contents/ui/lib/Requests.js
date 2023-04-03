@@ -28,11 +28,22 @@ function request(opt, callback) {
 			}
 		}
 	}
-	req.open(opt.method || "GET", opt.url, true)
+	let oldUrl =opt.url;
+	var url = opt.url;
+	var auth = "";
+	if (url.indexOf("|http") != -1){
+		url = oldUrl.substring(oldUrl.indexOf("|http") + 1)
+		auth = oldUrl.substring(0, oldUrl.indexOf("|http"))
+	}
+	// console.log("url:",url,"auth:",auth)
+	req.open(opt.method || "GET", url, true)
 	if (opt.headers) {
 		for (var key in opt.headers) {
 			req.setRequestHeader(key, opt.headers[key])
 		}
+	}
+	if(auth != ""){
+		req.setRequestHeader("Authorization","Bearer " + auth.trim())
 	}
 	req.send(opt.data)
 }

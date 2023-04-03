@@ -33,7 +33,7 @@ ConfigPage {
 			Label {
 				text: {
 					return [
-						'✅ https://invent.kde.org/' + i18n("User/Repo"),
+						'✅ token|https://invent.kde.org/' + i18n("User/Repo"),
 						'🚫 https://invent.kde.org/' + i18n("User"),
 						'✅ https://invent.kde.org/groups/plasma',
 						'🚫 https://invent.kde.org/plasma',
